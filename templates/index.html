@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+            background: #282828;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -18,69 +19,70 @@
 
         .container {
             text-align: center;
-            background-color: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            background-color: #171717;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
             width: 100%;
-            max-width: 400px;
+            max-width: 450px;
             animation: fadeIn 0.8s ease-out;
         }
 
         h2 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 30px;
-            font-weight: 600;
+            font-size: 28px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-weight: 700;
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
         .form-group input[type="file"] {
-            width: 90%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: transform 0.3s ease;
+            width: 95%;
+            padding: 15px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            font-size: 18px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
         .form-group input[type="file"]:hover {
-            transform: scale(1.02);
+            transform: scale(1.03);
+            border-color: #4CAF50;
         }
 
         button {
-            width: 45%;
-            padding: 12px;
-            margin-top: 20px;
-            background-color: #4CAF50;
+            width: 50%;
+            padding: 15px;
+            margin-top: 25px;
+            background-color: #007BFF;
             color: white;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: #0056b3;
             transform: scale(1.05);
         }
 
         button:active {
-            background-color: #3e8e41;
+            background-color: #004494;
         }
 
         a {
             color: #007BFF;
-            font-size: 18px;
-            text-decoration: none;
-            margin-top: 20px;
+            font-size: 20px;
+            text-decoration: underline;
+            margin-top: 25px;
             display: inline-block;
             transition: color 0.3s ease;
         }
@@ -93,8 +95,9 @@
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -103,38 +106,179 @@
 
         .error-message {
             color: red;
-            font-size: 14px;
-            margin-top: 10px;
+            font-size: 16px;
+            margin-top: 15px;
         }
 
+        .image-preview {
+            height: 50vh;
+            max-width: auto;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            display: none;
+        }
+
+        h2,a {
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
+                0 0 20px rgba(255, 255, 255, 0.699),
+                0 0 30px rgba(255, 255, 255, 0.933);
+            font-size: 2em;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .custom-file-upload {
+            display: inline-block;
+            padding: 15px;
+            cursor: pointer;
+            border: 2px dashed #ccc; /* 自定义边框样式 */
+            border-radius: 10px; /* 圆角 */
+            background-color: #f9f9f9; /* 背景颜色 */
+            transition: border-color 0.3s ease; /* 边框颜色过渡 */
+        }
+
+        .custom-file-upload:hover {
+            border-color: #4CAF50; /* 悬停时边框颜色 */
+        }
+
+        .hidden-input {
+            display: none; /* 隐藏原生文件输入 */
+        }
+
+        .upload-container {
+            border: 2px dashed #ccc; /* 边框样式 */
+            border-radius: 10px; /* 圆角 */
+            padding: 20px; /* 内边距 */
+            text-align: center; /* 文本居中 */
+            background-color: #f9f9f9; /* 背景颜色 */
+            transition: border-color 0.3s ease; /* 边框颜色过渡 */
+        }
+
+        .upload-container:hover {
+            border-color: #4CAF50; /* 悬停时边框颜色 */
+        }
+
+        .upload-text {
+            font-size: 18px; /* 字体大小 */
+            color: #666; /* 字体颜色 */
+            margin-bottom: 10px; /* 底部边距 */
+        }
+
+        .image-preview {
+            margin-top: 10px; /* 增加顶部边距 */
+            max-height: 50%;
+            max-width: auto; /* 限制预览图像的最大宽度 */
+            border: 1px solid #ccc; /* 添加边框 */
+            border-radius: 10px; /* 添加圆角 */
+            display: none; /* 初始隐藏 */
+        }
+
+        .submit-button {
+            display: none; /* 初始隐藏提交按钮 */
+            width: 100%; /* 增加按钮宽度 */
+            padding: 15px; /* 增加内边距 */
+            margin-top: 25px; /* 增加顶部边距 */
+            background-color: #4CAF50; /* 修改按钮背景颜色 */
+            color: white;
+            border: none;
+            border-radius: 10px; /* 修改圆角 */
+            cursor: pointer;
+            font-size: 18px; /* 增加字体大小 */
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* 增加过渡效果 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+        }
+
+        .submit-button:hover {
+            background-color: #45a049; /* 修改悬停时背景颜色 */
+            transform: translateY(-2px); /* 悬停时轻微上移 */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 悬停时增加阴影 */
+        }
+
+        .submit-button:active {
+            background-color: #3e8e41; /* 修改点击时背景颜色 */
+            transform: translateY(0); /* 点击时恢复位置 */
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* 点击时减少阴影 */
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <h2>Upload an Image to Check for Nudity</h2>
+        <h2>NUDENET</h2>
         <div class="form-group">
             <form method="POST" enctype="multipart/form-data" action="/detect" id="uploadForm">
-                <input type="file" name="image" accept="image/*" id="fileInput" />
-                <button type="submit">Upload and Detect</button>
+                <div class="upload-container">
+                    <input type="file" name="image" accept="image/*" id="fileInput" style="display: none;" />
+                    <div class="upload-text">Drag and drop your image here or click to select</div>
+                    <div>Choose File</div>
+                </div>
+                <img id="imagePreview" class="image-preview" src="" alt="Image Preview" />
+                <button type="submit" class="submit-button">Upload and Detect</button>
             </form>
         </div>
         <div class="error-message" id="error-message" style="display:none;">Please select an image file to upload.</div>
-        <a href="/results">View Previously Detected Images</a>
+        <a href="/results">Previous Results</a>
     </div>
 
     <script>
-        document.getElementById('uploadForm').addEventListener('submit', function(event) {
-            var fileInput = document.getElementById('fileInput');
-            var errorMessage = document.getElementById('error-message');
+        const uploadContainer = document.querySelector('.upload-container');
+        const fileInput = document.getElementById('fileInput');
+        const errorMessage = document.getElementById('error-message');
+        const imagePreview = document.getElementById('imagePreview');
+        const submitButton = document.querySelector('.submit-button');
 
-            // If no file is selected
-            if (!fileInput.files.length) {
-                errorMessage.style.display = 'block'; // Show the error message
-                event.preventDefault(); // Prevent the form from submitting
+        uploadContainer.addEventListener('click', () => {
+            fileInput.click(); // 点击上传区域时触发文件选择
+        });
+
+        fileInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result; // 设置预览图像的源
+                    imagePreview.style.display = 'block'; // 显示预览图像
+                    uploadContainer.style.display = 'none'; // 隐藏上传区域
+                    submitButton.style.display = 'block'; // 显示提交按钮
+                }
+                reader.readAsDataURL(file); // 读取文件为数据URL
             } else {
-                errorMessage.style.display = 'none'; // Hide the error message
+                imagePreview.style.display = 'none'; // 隐藏预览图像
+                uploadContainer.style.display = 'block'; // 显示上传区域
+                submitButton.style.display = 'none'; // 隐藏提交按钮
+            }
+        });
+
+        uploadContainer.addEventListener('dragover', (event) => {
+            event.preventDefault(); // 防止默认行为
+            uploadContainer.style.borderColor = '#4CAF50'; // 悬停时边框颜色
+        });
+
+        uploadContainer.addEventListener('dragleave', () => {
+            uploadContainer.style.borderColor = '#ccc'; // 恢复边框颜色
+        });
+
+        uploadContainer.addEventListener('drop', (event) => {
+            event.preventDefault(); // 防止默认行为
+            uploadContainer.style.borderColor = '#ccc'; // 恢复边框颜色
+            const files = event.dataTransfer.files;
+            if (files.length) {
+                fileInput.files = files; // 设置文件输入的文件
+                fileInput.dispatchEvent(new Event('change')); // 触发change事件
+            }
+        });
+
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            if (!fileInput.files.length) {
+                errorMessage.style.display = 'block'; // 显示错误信息
+                event.preventDefault(); // 阻止表单提交
+            } else {
+                errorMessage.style.display = 'none'; // 隐藏错误信息
             }
         });
     </script>
 </body>
+
 </html>
