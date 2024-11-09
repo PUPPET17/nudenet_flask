@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image for Nudity Detection</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-group input[type="file"] {
+            width: 90%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .form-group input[type="file"]:hover {
+            transform: scale(1.02);
+        }
+
+        button {
+            width: 45%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            background-color: #3e8e41;
+        }
+
+        a {
+            color: #007BFF;
+            font-size: 18px;
+            text-decoration: none;
+            margin-top: 20px;
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        /* Animation for fade-in effect */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Upload an Image to Check for Nudity</h2>
+        <div class="form-group">
+            <form method="POST" enctype="multipart/form-data" action="/detect" id="uploadForm">
+                <input type="file" name="image" accept="image/*" id="fileInput" />
+                <button type="submit">Upload and Detect</button>
+            </form>
+        </div>
+        <div class="error-message" id="error-message" style="display:none;">Please select an image file to upload.</div>
+        <a href="/results">View Previously Detected Images</a>
+    </div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function(event) {
+            var fileInput = document.getElementById('fileInput');
+            var errorMessage = document.getElementById('error-message');
+
+            // If no file is selected
+            if (!fileInput.files.length) {
+                errorMessage.style.display = 'block'; // Show the error message
+                event.preventDefault(); // Prevent the form from submitting
+            } else {
+                errorMessage.style.display = 'none'; // Hide the error message
+            }
+        });
+    </script>
+</body>
+</html>
