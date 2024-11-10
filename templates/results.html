@@ -42,17 +42,21 @@
             background-color: #e60000;
         }
         .back-button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #007BFF;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            background-color: rgba(0, 86, 179, 0.8);
             color: white;
-            text-decoration: none;
-            border-radius: 5px;
+            border: none;
+            border-radius: 8px;
             font-size: 16px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            z-index: 1000;
         }
         .back-button:hover {
-            background-color: #0056b3;
+            background-color: rgba(0, 86, 179, 1);
         }
     </style>
 </head>

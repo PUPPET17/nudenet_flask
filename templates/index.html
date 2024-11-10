@@ -111,11 +111,13 @@
         }
 
         .image-preview {
+            position: relative; /* 设置相对定位 */
+            margin-top: 10px; 
+            max-width: auto; /* 限制预览图像的最大宽度 */
+            border: 1px solid #ccc; /* 添加边框 */
+            border-radius: 10px; /* 添加圆角 */
+            display: none; /* 初始隐藏 */
             height: 50vh;
-            max-width: auto;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            display: none;
         }
 
         h2,a {
@@ -179,7 +181,7 @@
             width: 100%; /* 增加按钮宽度 */
             padding: 15px; /* 增加内边距 */
             margin-top: 25px; /* 增加顶部边距 */
-            background-color: #4CAF50; /* 修改按钮背景颜色 */
+            background-color: #4CAF50; /* 修改按背景颜色 */
             color: white;
             border: none;
             border-radius: 10px; /* 修改圆角 */
@@ -200,6 +202,15 @@
             transform: translateY(0); /* 点击时恢复位置 */
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* 点击时减少阴影 */
         }
+
+        .close-preview {
+            position: absolute; /* 绝对定位 */
+            top: 10px; /* 距离顶部10px */
+            right: 10px; /* 距离右侧10px */
+            font-size: 24px; /* 字体大小 */
+            color: red; /* 字体颜色 */
+            cursor: pointer; /* 鼠标悬停时显示为手型 */
+        }
     </style>
 </head>
 
@@ -214,6 +225,7 @@
                     <div>Choose File</div>
                 </div>
                 <img id="imagePreview" class="image-preview" src="" alt="Image Preview" />
+                <div id="closePreview" class="close-preview" style="display: none;">&times;</div>
                 <button type="submit" class="submit-button">Upload and Detect</button>
             </form>
         </div>
@@ -227,6 +239,7 @@
         const errorMessage = document.getElementById('error-message');
         const imagePreview = document.getElementById('imagePreview');
         const submitButton = document.querySelector('.submit-button');
+        const closePreview = document.getElementById('closePreview');
 
         uploadContainer.addEventListener('click', () => {
             fileInput.click(); // 点击上传区域时触发文件选择
@@ -242,12 +255,14 @@
                     imagePreview.style.display = 'block'; // 显示预览图像
                     uploadContainer.style.display = 'none'; // 隐藏上传区域
                     submitButton.style.display = 'block'; // 显示提交按钮
+                    closePreview.style.display = 'block'; // 显示关闭符号
                 }
                 reader.readAsDataURL(file); // 读取文件为数据URL
             } else {
                 imagePreview.style.display = 'none'; // 隐藏预览图像
                 uploadContainer.style.display = 'block'; // 显示上传区域
                 submitButton.style.display = 'none'; // 隐藏提交按钮
+                closePreview.style.display = 'none'; // 隐藏关闭符号
             }
         });
 
@@ -277,6 +292,13 @@
             } else {
                 errorMessage.style.display = 'none'; // 隐藏错误信息
             }
+        });
+
+        closePreview.addEventListener('click', () => {
+            imagePreview.style.display = 'none'; // 隐藏预览图像
+            uploadContainer.style.display = 'block'; // 显示上传区域
+            submitButton.style.display = 'none'; // 隐藏提交按钮
+            closePreview.style.display = 'none'; // 隐藏关闭符号
         });
     </script>
 </body>
